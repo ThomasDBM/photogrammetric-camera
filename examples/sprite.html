@@ -52,6 +52,7 @@
         <script src="../dist/photogrammetric-camera.js"></script>
         <script>
             var THREE = PhotogrammetricCamera.THREE;
+            var THREE_ = PhotogrammetricCamera.THREE_;
             var Parsers = PhotogrammetricCamera.Parsers;
             var FetchSource = PhotogrammetricCamera.FetchSource;
             var FilesSource = PhotogrammetricCamera.FilesSource;
@@ -62,8 +63,6 @@
             var PhotogrammetricCamera = PhotogrammetricCamera.PhotogrammetricCamera;
         </script>
         <script src="js/dat.gui.min.js"></script>
-        <script src="js/PLYLoader.js"></script>
-        <script src="js/OrbitControls.js"></script>
         <script type="module">
             import ScreenQuad from './js/ScreenQuad.es6.js';
             var orbitTarget, orbitControls;
@@ -211,7 +210,7 @@
             };
 
             // parse functions
-            var plyLoader = new THREE.PLYLoader();
+            var plyLoader = new THREE_.PLYLoader();
             var parsePly = (source) => (data => plyLoader.parse(data));
 
             function parseImage(source) {
@@ -457,7 +456,7 @@
                 window.addEventListener( 'resize', onWindowResize, false );
 
                 // controls
-                orbitControls = new THREE.OrbitControls( viewCamera, renderer.domElement );
+                orbitControls = new THREE_.OrbitControls( viewCamera, renderer.domElement );
                 orbitControls.enableDamping = false;
                 orbitControls.screenSpacePanning = false;
                 orbitControls.maxPolarAngle = 0.75 * Math.PI;
