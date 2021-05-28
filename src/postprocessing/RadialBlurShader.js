@@ -8,7 +8,7 @@ const RadialBlurShader = {
     'tDiffuse': { value: null },
     'center': { value: new Vector2(0.5,0.5) },
     'resolution': { value: new Vector2(1,1) },
-    'amount': { value: 0 },
+    'blur': { value: 0 },
     'pad': { value: 2 }
   },
 
@@ -19,7 +19,7 @@ precision highp int;
 uniform sampler2D tDiffuse;
 uniform vec2 center;
 uniform vec2 resolution;
-uniform float amount;
+uniform float blur;
 uniform float pad;
 
 in vec2 vUv;
@@ -28,9 +28,9 @@ out highp vec4 pc_FragColor;
 #include <postprocessing/radial>
 
 void main() {
-  float blur = max(0.01, amount*0.01);
-  vec2 p0 = mix(vUv,center,-blur);
-  vec2 p1 = mix(vUv,center,blur);
+  float t = max(0.01, blur*0.01);
+  vec2 p0 = mix(vUv,center,-t);
+  vec2 p1 = mix(vUv,center, t);
   toRadial(center, resolution, pad, p0);
   toRadial(center, resolution, pad, p1);
   vec2 ddx = dFdx( vUv );

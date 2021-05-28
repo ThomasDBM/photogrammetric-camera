@@ -75,14 +75,15 @@
         radialEffect = new PhotogrammetricCamera.RawShaderPass( PhotogrammetricCamera.RadialShader );
         composer.addPass( radialEffect );
 
-        var amount = 6, stride = 1;
-        for(let i = 0; i < 10; ++i ) {
+        for(let i = 0; i < 12; ++i ) {
           radialSumEffect[i] = new PhotogrammetricCamera.RawShaderPass( PhotogrammetricCamera.SumShader );
-          radialSumEffect[i].uniforms.stride.value = stride;
-          radialSumEffect[i].uniforms.amount.value = amount;
           composer.addPass( radialSumEffect[i] );
-          stride *= amount;
         }
+        //radialSumEffect[0].uniforms.amount.value = 2; // 11 sum passes with <=2048 pix
+        //radialSumEffect[0].uniforms.amount.value = 3; // 7 sum passes with <=2187 pix
+        //radialSumEffect[0].uniforms.amount.value = 4; // 6 sum passes with <=4096 pix
+        //radialSumEffect[0].uniforms.amount.value = 5; // 5 sum passes with <=3125 pix
+        radialSumEffect[0].uniforms.amount.value = 7; // 4 sum passes with <=2401 pix
 
         radialBlurEffect = new PhotogrammetricCamera.RawShaderPass( PhotogrammetricCamera.RadialBlurShader );
         composer.addPass( radialBlurEffect );
@@ -122,17 +123,19 @@
         composer.setSize( wpad, 2 * hpad );
         const s = Math.max( wpad, hpad );
         let enabled = radialSumEffect[0].enabled;
-        for(var i = 0; i<radialSumEffect.length; ++i) {
-          const u = radialSumEffect[i].uniforms;
-          u.resolution.value.set( wpad, hpad );
+        const amount = radialSumEffect[0].uniforms.amount.value;
+        for(var i = 0, stride = 1; i<radialSumEffect.length; ++i) {
+          radialSumEffect[i].uniforms.resolution.value.set( wpad, hpad );
+          radialSumEffect[i].uniforms.stride.value = stride;
+          radialSumEffect[i].uniforms.amount.value = amount;
           radialSumEffect[i].enabled = enabled;
-          enabled = enabled && ((u.stride.value * u.amount.value) < s);
+          stride *= amount;
+          enabled = enabled && (stride < s);
         }
         radialEffect.uniforms.resolution.value.set( w, h );
         radialEffect.uniforms.pad.value = pad;
         radialBlurEffect.uniforms.resolution.value.set( w, h );
         radialBlurEffect.uniforms.pad.value = pad;
-
       }
 
       function setCenter(x,y) {
@@ -152,9 +155,17 @@
         setCenter(x,y);
       }
 
+      function moveBlur(delta) {
+        let blur = Math.max(0,radialBlurEffect.uniforms.blur.value + delta);
+        radialBlurEffect.uniforms.blur.value = blur;
+        console.log("blur", blur);
+      }
+
       function moveAmount(delta) {
-        let amount = Math.max(0,radialBlurEffect.uniforms.amount.value + delta);
-        radialBlurEffect.uniforms.amount.value = amount;
+        let amount = Math.max(2,radialSumEffect[0].uniforms.amount.value + delta);
+        radialSumEffect[0].uniforms.amount.value = amount;
+        onWindowResize();
+        console.log("amount", amount, ", passes", 1+radialSumEffect.map(e => e.enabled).lastIndexOf(true));
       }
 
       function onClick(e) {
@@ -176,15 +187,16 @@
           case "ArrowRight": moveCenter(speed/window.innerWidth,0); break;
           case "Enter"     : onClick(); break;
           case " "         : animated = !animated; break;
-          case "+"         : moveAmount(+1); break;
-          case "-"         : moveAmount(-1); break;
+          case "+"         : moveBlur(+1); break;
+          case "-"         : moveBlur(-1); break;
+          case "PageUp"    : moveAmount(+1); break;
+          case "PageDown"  : moveAmount(-1); break;
           default          : return;
         }
         event.preventDefault();
       }
 
       function animate() {
-
         if(animated) {
           scene.rotation.x += 0.005;
           scene.rotation.y += 0.01;
