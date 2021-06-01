@@ -49,9 +49,9 @@
             </ul>
             Mathieu Brédif (<a href="http://recherche.ign.fr/labos/matis/~bredif">IGN ENSG, Lastig/Geovis, Univ. Paris Est</a>, <a href="http://github.com/mbredif/three-photogrammetric-camera">github</a>)
         </div>
+        <script src="../dist/three.min.js"></script>
         <script src="../dist/photogrammetric-camera.js"></script>
         <script>
-            var THREE = PhotogrammetricCamera.THREE;
             var THREE_ = PhotogrammetricCamera.THREE_;
             var Parsers = PhotogrammetricCamera.Parsers;
             var FetchSource = PhotogrammetricCamera.FetchSource;
@@ -555,7 +555,7 @@
                         loadOrientation('TestOri-2.xml', source);
                     },
                     Abbey: function() {
-                        var path = 'https://raw.githubusercontent.com/micmacIGN/Documentation/master/NEW-DATA/CompensOnLine/';
+                        var path = 'https://raw.githubusercontent.com/micmacIGN/Documentation/master/Data/CompensOnLine/';
                         var source = new FetchSource(path);
                         loadOrientedImage('Ori-Rel/Orientation-Abbey-IMG_0204.jpg.xml', 'Abbey-IMG_0204.jpg', source);
                         loadOrientedImage('Ori-Rel/Orientation-Abbey-IMG_0205.jpg.xml', 'Abbey-IMG_0205.jpg', source);

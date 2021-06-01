@@ -110,7 +110,7 @@ export default {
         camera.matrix = parseExtrinsics(xml);
         camera.matrix.decompose(camera.position, camera.quaternion, camera.scale);
         camera.updateMatrixWorld(true);
-				camera.name = name;
+        camera.name = name;
         return camera;
     },
     format: 'matis/orientation',

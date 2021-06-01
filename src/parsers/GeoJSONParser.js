@@ -78,7 +78,7 @@ export default {
           }
           return cameras;
         } catch (e) {
-					//console.warn('not a geojson');
+          //console.warn('not a geojson');
           return null;
         }
     },

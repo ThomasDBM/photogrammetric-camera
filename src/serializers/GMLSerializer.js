@@ -10,11 +10,11 @@ export default {
     serialize: function serializeFeature(camera, crsName) {
         const d = camera.distos ? camera.distos[0] : {};
         const e = camera.imageMatrix.elements;
-			  const pos = camera.position;
-				const f = camera.focal;
-				const v = camera.view;
-				const p = camera.point;
-				const q = camera.quaternion;
+        const pos = camera.position;
+        const f = camera.focal;
+        const v = camera.view;
+        const p = camera.point;
+        const q = camera.quaternion;
 
         // todo  (using crsName?)
         const epsg = '4978';
@@ -28,8 +28,8 @@ export default {
   </gml:Point>
 </point>
 <name>${camera.name}</name>
-<source>${source }</source>
-<epsgquaternion>${epsgquaternion }</epsgquaternion>
+<source>${source}</source>
+<epsgquaternion>${epsgquaternion}</epsgquaternion>
 <qx>${q.x}</qx>
 <qy>${q.y}</qy>
 <qz>${q.z}</qz>
@@ -41,12 +41,12 @@ export default {
 <sk>0.0</sk>
 <sx>${v.fullWidth}</sx>
 <sy>${v.fullHeight}</sy>
-<c3>${d.R.x }</c3>
-<c5>${d.R.y }</c5>
-<c7>${d.R.z }</c7>
-<cm>${d.R.w }</cm>
-<cx>${d.C.x }</cx>
-<cy>${d.C.y }</cy>
+<c3>${d.R.x}</c3>
+<c5>${d.R.y}</c5>
+<c7>${d.R.z}</c7>
+<cm>${d.R.w}</cm>
+<cx>${d.C.x}</cx>
+<cy>${d.C.y}</cy>
 <m00>${e[ 0]}</m00>
 <m01>${e[ 1]}</m01>
 <m10>${e[ 4]}</m10>

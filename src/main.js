@@ -1,9 +1,7 @@
 import * as Parsers from './parsers/parsers';
 import * as Serializers from './serializers/serializers';
-import * as THREE from 'three';
 import * as THREE_ from './three-examples';
 
-export { THREE };
 export { THREE_ };
 export { Serializers };
 export { Parsers };
