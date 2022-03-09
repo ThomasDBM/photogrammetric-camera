@@ -1,10 +1,10 @@
 import { Vector2, Vector3, Vector4, Matrix4, Euler } from 'three';
-import { default as BrownDistortion } from '../cameras/distortions/BrownDistortion';
-import { default as EbnerDistortion } from '../cameras/distortions/EbnerDistortion';
-import { default as FishEyeDistortion } from '../cameras/distortions/FishEyeDistortion';
-import { default as FraserDistortion } from '../cameras/distortions/FraserDistortion';
-import { default as PolynomDistortion } from '../cameras/distortions/PolynomDistortion';
-import { default as RadialDistortion } from '../cameras/distortions/RadialDistortion';
+import { default as BrownDistortion } from '../distortions/BrownDistortion';
+import { default as EbnerDistortion } from '../distortions/EbnerDistortion';
+import { default as FishEyeDistortion } from '../distortions/FishEyeDistortion';
+import { default as FraserDistortion } from '../distortions/FraserDistortion';
+import { default as PolynomDistortion } from '../distortions/PolynomDistortion';
+import { default as RadialDistortion } from '../distortions/RadialDistortion';
 
 function parseText(xml, tagName) {
     var node = xml.getElementsByTagName(tagName)[0];

@@ -1,4 +1,4 @@
-import { default as PhotogrammetricDistortion } from '../PhotogrammetricDistortion';
+import { default as PhotogrammetricDistortion } from './PhotogrammetricDistortion';
 
 class FishEyeDistortion {
 

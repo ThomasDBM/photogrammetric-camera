@@ -1,6 +1,6 @@
 import { Vector2, Vector3, Vector4 } from 'three';
 import PhotogrammetricCamera from '../cameras/PhotogrammetricCamera';
-import { default as RadialDistortion } from '../cameras/distortions/RadialDistortion';
+import { default as RadialDistortion } from '../distortions/RadialDistortion';
 
 class BundlerOrientationParser  {
     /** @module BundlerOrientationParser */

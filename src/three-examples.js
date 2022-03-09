@@ -7,7 +7,7 @@ import { CopyShader } from 'three/examples/jsm/shaders/CopyShader';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
-import { WEBGL } from 'three/examples/jsm/WEBGL';
+import { WEBGL } from 'three/examples/jsm/WebGL';
 
 export { OrbitControls, MapControls, FirstPersonControls };
 export { PLYLoader };

@@ -1,10 +1,12 @@
+import * as Distortions from './distortions/distortions';
 import * as Parsers from './parsers/parsers';
 import * as Serializers from './serializers/serializers';
 import * as THREE_ from './three-examples';
 
 export { THREE_ };
-export { Serializers };
+export { Distortions };
 export { Parsers };
+export { Serializers };
 export { default as PhotogrammetricCamera } from './cameras/PhotogrammetricCamera';
 export { default as FilesSource } from './sources/FilesSource';
 export { default as FetchSource } from './sources/FetchSource';

@@ -1,6 +1,6 @@
 import { Vector3 } from 'three';
-import PhotogrammetricCamera from '../cameras/PhotogrammetricCamera';
-import RadialDistortion from '../cameras/distortions/RadialDistortion';
+import { default as PhotogrammetricCamera } from '../cameras/PhotogrammetricCamera';
+import { default as RadialDistortion } from '../distortions/RadialDistortion';
 
 export default {
     /** @module GeoJSONParser */

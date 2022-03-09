@@ -1,5 +1,5 @@
 import { Vector2, Vector4, ShaderChunk } from 'three';
-import { default as PhotogrammetricDistortion } from '../PhotogrammetricDistortion';
+import { default as PhotogrammetricDistortion } from './PhotogrammetricDistortion';
 
 // http://fr.wikipedia.org/wiki/Methode_de_Cardan
 function cardan_cubic_roots(a, b, c, d)
